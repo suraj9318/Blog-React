@@ -1,38 +1,60 @@
-.App {
-  text-align: center;
+body{
+  color: #222;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+img{
+  max-width: 100%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+main{
+  padding: 10px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  align-items: center ;
+  margin-top: 20px;
+}
+header a{
+  text-decoration: none;
+  color: inherit;
+}
+header .logo{
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+header nav{
+  display: flex;
+  gap: 15px;
 }
 
-.App-link {
-  color: #61dafb;
+.post{
+display: grid;
+grid-template-columns: 0.9fr 1.1fr;
+gap: 20px;
+margin-bottom: 30px;
+}
+.post .texts h2{
+  margin: 0;
+  font-size: 1.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.info{
+  margin: 6px 0px;
+  color: #888;
+  font-size: .75rem;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+}
+.info a{
+  color: #333;
+  text-decoration: none;
+}
+
+.post .summary{
+  margin: 17px 0;
+  line-height: 1.5rem;
+
 }
