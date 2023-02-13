@@ -1,11 +1,14 @@
 import React from 'react'
 
 const Register = () => {
-  return (
-    <div>
-      <h2>Register</h2>
-    </div>
-  )
+    return (
+        <form className='register'>
+            <h1>Register</h1>
+            <input type="text" placeholder='username' />
+            <input type="password" placeholder='password' />
+            <button>Registers</button>
+        </form>
+    )
 }
 
 export default Register

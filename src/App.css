@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 body{
   color: #222;
 }
@@ -57,4 +60,38 @@ margin-bottom: 30px;
   margin: 17px 0;
   line-height: 1.5rem;
 
+}
+
+.register,.login{
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input{
+  display: block;
+  width: 100%;
+  margin-block: 1rem;
+  padding: 11px 7px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+button{
+  width: 100%;
+  margin-block: 2rem;
+  display: block;
+  background-color: #555;
+  border: 0;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 12px 0;
+  font-size: 16px;
+}
+form h1{
+  text-align: center;
+    color: #857e7e;
+    margin-block: 3rem;
 }
