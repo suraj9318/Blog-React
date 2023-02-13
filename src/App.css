@@ -67,7 +67,7 @@ margin-bottom: 30px;
   margin: 0 auto;
 }
 
-input{
+.input{
   display: block;
   width: 100%;
   margin-block: 1rem;
@@ -78,7 +78,7 @@ input{
   font-size: 16px;
 }
 
-button{
+.btn{
   width: 100%;
   margin-block: 2rem;
   display: block;
@@ -91,7 +91,7 @@ button{
   font-size: 16px;
   transition: 0.5s ease-in-out;
 }
-button:hover{
+.btn:hover{
   background-color: #302f2f;
   
 }

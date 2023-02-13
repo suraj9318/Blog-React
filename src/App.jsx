@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 
 
+
 // 26:08
 function App() {
   return (
@@ -24,7 +25,9 @@ function App() {
 
                 
         </Routes>
+       
       </main>
+      
     </BrowserRouter>
   );
 }
