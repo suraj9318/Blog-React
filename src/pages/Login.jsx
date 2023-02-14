@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { UserContext } from '../UserContext';
 
 const Login = () => {
   const [data,setData] = useState({
@@ -8,6 +9,7 @@ const Login = () => {
     password : ''
   })
 
+  const {setUserInfo} = useContext(UserContext)
   const navigate = useNavigate();
   const handleLogin = async(e)=>{
     e.preventDefault();
@@ -20,16 +22,20 @@ const Login = () => {
     },
     credentials : 'include'
     })
-
-      console.log(request)
-    if(request.ok)
-    {
-      toast.success('welcome back '+ data.username);
-      navigate('/')
-    }
-    else{
-      toast.error('Wrong Credentials');
-    }
+    const response = await request.json()
+    console.log(response);
+    debugger
+    
+      if(response.msg === "valid user")
+      {
+        setUserInfo(response?.username)
+        navigate('/')
+        toast.success('welcome back '+response?.username)
+      }
+      else{
+        toast.error('Wrong Credentials')
+      }
+   
     
   }
   return (
