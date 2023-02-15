@@ -41,7 +41,7 @@ const Login = () => {
   return (
     
       <form className='login'>
-          <h1>Login</h1>
+          <h1 className='heading' >Login</h1>
         <input className='input' value={data.username} onChange={(e)=>{setData({...data,username:e.target.value})}} type="text" placeholder='username'/>
         <input className='input' value={data.password} onChange={(e)=>{setData({...data,password:e.target.value})}}  type="password" placeholder='password'/>
         <button className='btn' onClick={handleLogin}>Login</button>
