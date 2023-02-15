@@ -4,7 +4,8 @@ export const UserContext = createContext({})
 
 export function UserContextProvider({children}){
     const [userInfo, setUserInfo] = useState({})
-    return <UserContext.Provider value={{userInfo,setUserInfo}}>
+    const [userData, setUserData] = useState({})
+    return <UserContext.Provider value={{userInfo,setUserInfo,userData, setUserData}}>
         {children}
     </UserContext.Provider>
 }
