@@ -1,8 +1,11 @@
 import { formatISO9075 } from 'date-fns'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { UserContext } from '../UserContext'
 
 const PostPage = () => {
+
+    const {profile,userInfo} = useContext(UserContext)
    const {id} =  useParams()
     const [postInfo, setPostInfo] = useState(null)
    const getData = async() =>{
@@ -27,8 +30,11 @@ const PostPage = () => {
     <>
     <div className='post-page'>
         <h1>{postInfo.title}</h1>
+        {profile?.username === userInfo && 
+        <button className='edit'>Edit</button>
+        }
         <p className="info">
-            <a href="">Suraj Mishra</a>
+            <a href="">{profile.username}</a>
             <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
           </p>
 

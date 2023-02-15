@@ -119,3 +119,24 @@ margin-bottom: 30px;
   object-fit: cover;
   object-position: center center  ;
 }
+
+.label{
+  font-size: 18px;
+  margin-bottom: 0px;
+  font-weight: 600;
+}
+
+.edit{
+  padding: 9px 50px;
+  border: none;
+  background: #6c6cbd;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  font-family: monospace;
+  cursor: pointer;
+}
+
+.edit:hover{
+  background-color: rgb(81, 81, 179);
+}

@@ -5,7 +5,8 @@ export const UserContext = createContext({})
 export function UserContextProvider({children}){
     const [userInfo, setUserInfo] = useState({})
     const [userData, setUserData] = useState({})
-    return <UserContext.Provider value={{userInfo,setUserInfo,userData, setUserData}}>
+    const [profile, setProfile] = useState({})
+    return <UserContext.Provider value={{userInfo,setUserInfo,userData, setUserData, profile, setProfile}}>
         {children}
     </UserContext.Provider>
 }

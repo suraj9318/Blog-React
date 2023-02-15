@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { UserContext } from '../UserContext'
 
 const Header = () => {
-    const {setUserInfo, userInfo} = useContext(UserContext)
+    const {setUserInfo, userInfo, setProfile} = useContext(UserContext)
 
     const checkUser =async ()=>{
         const request = await fetch('http://localhost:5000/profile',{
@@ -11,6 +11,7 @@ const Header = () => {
         })
        const res = await request.json() 
        setUserInfo(res.username);
+       setProfile(res)
     }
     useEffect(()=>{
         checkUser();
@@ -22,6 +23,7 @@ const Header = () => {
             method : 'POST'
          })
          setUserInfo('')
+         setProfile({})
     }
     return (
         <header>

@@ -9,7 +9,7 @@ const Login = () => {
     password : ''
   })
 
-  const {setUserInfo} = useContext(UserContext)
+  const {setUserInfo,setUserData} = useContext(UserContext)
   const navigate = useNavigate();
   const handleLogin = async(e)=>{
     e.preventDefault();
@@ -29,6 +29,7 @@ const Login = () => {
       if(response.msg === "valid user")
       {
         setUserInfo(response?.username)
+        setUserData(response)
         navigate('/')
         toast.success('welcome back '+response?.username)
       }
