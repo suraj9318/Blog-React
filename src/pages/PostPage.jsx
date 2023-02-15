@@ -1,10 +1,10 @@
 import { formatISO9075 } from 'date-fns'
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { UserContext } from '../UserContext'
 
 const PostPage = () => {
-
+    const navigate = useNavigate();
     const {profile,userInfo} = useContext(UserContext)
    const {id} =  useParams()
     const [postInfo, setPostInfo] = useState(null)
@@ -31,7 +31,9 @@ const PostPage = () => {
     <div className='post-page'>
         <h1>{postInfo.title}</h1>
         {profile?.username === userInfo && 
-        <button className='edit'>Edit</button>
+        <button className='edit'
+        onClick={()=> navigate(`/edit/${postInfo._id}`)}
+        >Edit</button>
         }
         <p className="info">
             <a href="">{profile.username}</a>

@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../UserContext';
 
 const modules = {
@@ -22,7 +22,21 @@ const formats = [
     'link', 'image'
   ]
 
-const CreatePost = () => {
+const EditPost = () => {
+    const {id} =  useParams()
+    const getData = async() =>{
+        const request = await fetch(`http://localhost:5000/post/${id}`)
+        const data = await  request.json();    
+
+        console.log(data);
+        
+       }
+    
+       useEffect(()=>{
+            getData();
+       },[])
+
+
     const {userInfo, profile} = useContext(UserContext)
     const navigate = useNavigate();
     const initialState = {
@@ -33,34 +47,13 @@ const CreatePost = () => {
     }
     const [data,setData] = useState(initialState) 
 
-    const createNewPost = async (e) =>{
+
+    const updatePost = async (e) =>{
         e.preventDefault();
-        const values = new FormData();
-        values.set('title', data.title)
-        values.set('summary', data.summary)
-        values.set('content', data.content)
-        values.set('file', data.files[0])
-
-        const resp = await fetch('http://localhost:5000/post ', {
-                method: 'POST', // or 'PUT'
-                body: values,
-            })
-        if(resp.ok){
-            setData(initialState);
-            toast.success('Post Created Successfully')
-            navigate('/')
-        }
-        else{
-            toast.error("Something went Wrong")
-        }
-            } 
-
-            if(profile?.username !== userInfo){
-                return<h1>Not a Valid user</h1>
-            }
-            
+       
+    }
    return (
-    <form onSubmit={createNewPost}>
+    <form onSubmit={updatePost}>
         <label className='label' htmlFor="">Title</label>
         <input type="text" placeholder='Title' className='input' value={data.title} onChange={(e)=> setData({...data,title: e.target.value})}/>
         <label className='label' htmlFor="">Author</label>
@@ -74,9 +67,9 @@ const CreatePost = () => {
 
         <label className='label' htmlFor="">Content</label>
         <ReactQuill className='input' modules={modules} formats={formats} value={data.content} onChange={(newValue)=> setData({...data,content: newValue})} />
-        <button type='submit' className='btn'>Edit Post</button>
+        <button type='submit' className='btn'>Create Post</button>
     </form>
   )
 }
 
-export default CreatePost
+export default EditPost
