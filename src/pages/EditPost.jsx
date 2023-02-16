@@ -52,11 +52,13 @@ const EditPost = () => {
         values.set('title', data.title)
         values.set('summary', data.summary)
         values.set('content', data.content)
+        values.set('id', id)
         values.set('file', data.files?.[0])
 
         const request = await fetch('http://localhost:5000/post',{
             method : 'PUT',
-            body : values
+            body : values,
+            credentials : 'include'
         })
         if(request.ok){
             navigate('/post/'+id)
