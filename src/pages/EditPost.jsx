@@ -29,7 +29,7 @@ const EditPost = () => {
         const data = await  request.json();    
 
         console.log(data);
-        
+        setData({...data})
        }
     
        useEffect(()=>{
@@ -46,12 +46,30 @@ const EditPost = () => {
         files : ''
     }
     const [data,setData] = useState(initialState) 
-
-
     const updatePost = async (e) =>{
         e.preventDefault();
+        const values = new FormData();
+        values.set('title', data.title)
+        values.set('summary', data.summary)
+        values.set('content', data.content)
+        values.set('file', data.files?.[0])
+
+        const request = await fetch('http://localhost:5000/post',{
+            method : 'PUT',
+            body : values
+        })
+        if(request.ok){
+            navigate('/post/'+id)
+            toast.success('updated successfully')
+        }
+    
        
-    }
+       } 
+
+            if(profile?.username !== userInfo){
+                return <h1>Not a Valid user</h1>
+            }
+            
    return (
     <form onSubmit={updatePost}>
         <label className='label' htmlFor="">Title</label>
@@ -64,8 +82,9 @@ const EditPost = () => {
 
         <label className='label' htmlFor="">Image</label>
         <input className='input' type="file" onChange={(e)=> setData({...data, files : e.target.files})} />
+        <img src={'http://localhost:5000/'+data.cover} alt="" style={{width : "20%"}}/>
 
-        <label className='label' htmlFor="">Content</label>
+        <label className='label' htmlFor="" style={{    display: "block"}}>Content</label>
         <ReactQuill className='input' modules={modules} formats={formats} value={data.content} onChange={(newValue)=> setData({...data,content: newValue})} />
         <button type='submit' className='btn'>Create Post</button>
     </form>
